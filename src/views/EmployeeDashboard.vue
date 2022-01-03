@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import employeeData from '../data/employee.json'
+import employeeData from '../data/employees.json'
 export default {
   name: 'employeeDashboard',
   data() {
