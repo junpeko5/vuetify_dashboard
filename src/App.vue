@@ -37,6 +37,14 @@
         >
           {{ link.label }}
         </v-btn>
+        <v-btn
+          @click="toggleTheme"
+          text
+          rounded
+          class="my-2"
+        >
+          Toggle Theme
+        </v-btn>
         <v-col
           class="primary lighten-2 py-4 text-center white--text"
           cols="12"
@@ -80,5 +88,11 @@ export default {
       }
     ]
   }),
+  methods: {
+    toggleTheme() {
+      this.$vuetify.theme.themes.dark.anchor = '#41B883'
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
+  }
 };
 </script>

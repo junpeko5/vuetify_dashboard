@@ -7,7 +7,10 @@
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row
+      id="below-the-fold"
+      v-intersect="showMoreContent"
+    >
       <v-col cols="12" md="8">
         <EmployeesTable :employees="employees" @select-employee="setEmployee" />
         <v-data-table
@@ -34,6 +37,16 @@
         <StatisticCard
           :statistic="statistic"
         />
+      </v-col>
+    </v-row>
+
+    <v-row v-if="loadNewContent" id="more-content">
+      <v-col>
+        <v-skeleton-loader
+          ref="skeleton"
+          type="table"
+          class="mx-auto"
+        ></v-skeleton-loader>
       </v-col>
     </v-row>
 
@@ -179,7 +192,8 @@ export default {
         title: ''
       },
       statistics: statisticsData,
-      timeline: timelineData
+      timeline: timelineData,
+      loadNewContent: false,
     }
   },
   methods: {
@@ -191,6 +205,9 @@ export default {
       this.snackbar = true
       this.selectedEmployee.name = event.name
       this.selectedEmployee.title = event.title
+    },
+    showMoreContent(entries) {
+      this.loadNewContent = entries[0].isIntersecting
     }
   }
 }
