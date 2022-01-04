@@ -71,6 +71,10 @@ export default {
         url: '/dashboard'
       },
       {
+        label: 'Signup',
+        url: '/signup'
+      },
+      {
         label: 'Employee Dashboard',
         url: '/employee-dashboard'
       }
